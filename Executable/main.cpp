@@ -1,9 +1,3 @@
-#include <iostream>
+#include "ServerApp.h"
 
-#include "Preloader.hpp"
-
-int main() {
-    createStaticFolder();
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}
+POCO_SERVER_MAIN(ServerApplication)

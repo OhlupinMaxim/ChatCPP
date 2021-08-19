@@ -13,6 +13,12 @@ const static std::string staticRootExceptionMessage = "Create Static's Folder Er
 
 const static std::string apiRootPath = "../api";
 
+static void printServerParamsStarted(Poco::Net::HTTPServerParams* params){
+    std::cout << "Server Started on localhost:8080 \n";
+    std::cout << "Set Keep Alive == " << (params->getKeepAlive() ? "True\n" : "False\n");
+    std::cout << "Max Thread == " << params->getMaxThreads() << "\n";
+}
+
 static void createStaticFolder() {
     try {
         std::unique_ptr<Poco::File> file(new Poco::File(staticFilesPath));

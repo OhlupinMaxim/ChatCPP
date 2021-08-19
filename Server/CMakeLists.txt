@@ -6,10 +6,13 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 file(GLOB SERVER_HEADERS
         include/*.h
         include/*hpp
+        include/handlers/*.h
+        include/handlers/*.hpp
         )
 
 file(GLOB SERVER_SOURCE
         source/*.cpp
+        source/handlers/*.cpp
         )
 
 add_library(${PROJECT_NAME} SHARED ${SERVER_HEADERS} ${SERVER_SOURCE})

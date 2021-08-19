@@ -12,7 +12,7 @@ file(GLOB JSON_SOURCE
         source/*.cpp
         )
 
-find_package(Poco COMPONENTS Foundation Net REQUIRED)
+find_package(Poco COMPONENTS Foundation Net Util REQUIRED)
 
 add_library(${PROJECT_NAME} SHARED ${JSON_HEADERS} ${JSON_SOURCE})
 
