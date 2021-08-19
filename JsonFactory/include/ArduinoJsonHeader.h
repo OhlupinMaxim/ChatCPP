@@ -3469,11 +3469,13 @@ class JsonDocument : public Visitable {
   bool operator!=(VariantConstRef rhs) const {
     return getVariant() != rhs;
   }
- protected:
-  JsonDocument() : _pool(0, 0) {
-    _data.init();
-  }
-  JsonDocument(MemoryPool pool) : _pool(pool) {
+
+    JsonDocument() : _pool(0, 0) {
+      _data.init();
+    }
+
+protected:
+    JsonDocument(MemoryPool pool) : _pool(pool) {
     _data.init();
   }
   JsonDocument(char* buf, size_t capa) : _pool(buf, capa) {

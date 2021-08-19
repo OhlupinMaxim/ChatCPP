@@ -4,8 +4,7 @@
 #include <Poco/Net/HTTPRequestHandlerFactory.h>
 #include <Poco/Net/HTTPServerRequest.h>
 
-
-#include "handlers/BaseHandler.h"
+#include "handlers/ErrorRequestHandler.h"
 
 
 class RequestHandlerFactory : public Poco::Net::HTTPRequestHandlerFactory {
