@@ -8,9 +8,9 @@ class ErrorRequestHandler : public BaseHandler {
 
 private:
     int status;
-
+    std::string msg;
 public:
-    ErrorRequestHandler(int _status);
+    ErrorRequestHandler(const int &_status, const std::string &_msg);
 
     ~ErrorRequestHandler();
 

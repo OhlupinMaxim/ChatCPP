@@ -1,6 +1,6 @@
 #include "include/handlers/ErrorRequestHandler.h"
 
-ErrorRequestHandler::ErrorRequestHandler(int _status) : status(_status) {};
+ErrorRequestHandler::ErrorRequestHandler(const int& _status, const std::string& _msg) : status(_status), msg(_msg) {};
 
 ErrorRequestHandler::~ErrorRequestHandler() = default;
 
@@ -11,7 +11,7 @@ void ErrorRequestHandler::handleRequest(Poco::Net::HTTPServerRequest &request,
     auto &send = response.send();
 
     std::unique_ptr<ErrorSerializer> serializer (new ErrorSerializer(status));
-    send << serializer->serialize(getErrorMessage());
+    send << serializer->serialize(getErrorMessage() + "\n" + msg);
 
     printLog(request, response);
 }

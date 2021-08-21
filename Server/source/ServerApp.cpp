@@ -27,4 +27,6 @@ int ServerApplication::main(const std::vector<std::string>& args) {
     waitForTerminationRequest();
 
     server->stopAll();
+
+    return EXIT_SUCCESS;
 }

@@ -5,6 +5,8 @@
 #include <Poco/Net/HTTPServerRequest.h>
 
 #include "handlers/ErrorRequestHandler.h"
+#include "handlers/FileHandler.h"
+
 
 
 class RequestHandlerFactory : public Poco::Net::HTTPRequestHandlerFactory {
