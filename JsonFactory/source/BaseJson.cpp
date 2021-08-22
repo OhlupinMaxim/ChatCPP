@@ -10,3 +10,9 @@ BaseJson::BaseJson(int _status) : status(_status) {
 
 BaseJson::~BaseJson() = default;
 
+const std::string BaseJson::toString() const {
+    std::unique_ptr<std::string> result (new std::string);
+    serializeJson(json, *result);
+    return *result;
+}
+

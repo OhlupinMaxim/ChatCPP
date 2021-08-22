@@ -6,13 +6,23 @@ RequestHandlerFactory::~RequestHandlerFactory() = default;
 
 Poco::Net::HTTPRequestHandler *RequestHandlerFactory::createRequestHandler(
         const Poco::Net::HTTPServerRequest &request) {
+
     auto &uri = request.getURI();
 
     try {
-
         if (uri == "/") return new FileHandler(homePage);
 
-        if (uri == "/chats/") return new FileHandler(roomPage);
+        if (uri == "/room/") return new FileHandler(roomPage);
+
+        if (uri == "/room/add/") return new FileHandler(addedRoomPage);
+
+        if (uri == "/api/room/id/")
+
+        if (request.find("Upgrade") != request.end()) {
+            if (Poco::icompare(request["Upgrade"], "websocket") == 0) {
+                return new WebSocketHandler();
+            }
+        }
 
         return new FileHandler(err404page);
 
@@ -20,7 +30,9 @@ Poco::Net::HTTPRequestHandler *RequestHandlerFactory::createRequestHandler(
         return new FileHandler(err404page);
     } catch (Poco::InvalidArgumentException &ex2) {
         return new FileHandler(err400page);
-    } catch (Poco::ApplicationException &ex3) {
+    } catch (Poco::UnhandledException &ex3) {
+        return new FileHandler(err405page);
+    } catch (Poco::ApplicationException &ex4) {
         return new FileHandler(err500page);
     }
 }

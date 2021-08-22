@@ -7,7 +7,7 @@
 #include <Poco/DateTimeFormatter.h>
 #include <Poco/LocalDateTime.h>
 
-#include "ArduinoJsonHeader.h"
+#include "libs/ArduinoJsonHeader.h"
 
 
 class BaseJson {
@@ -22,4 +22,6 @@ public:
     BaseJson(int _status = 200);
 
     ~BaseJson();
+
+    const std::string toString() const;
 };

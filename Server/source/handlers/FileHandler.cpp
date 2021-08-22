@@ -5,6 +5,9 @@ FileHandler::FileHandler(const std::string &_pathFile) : pathFile(_pathFile) {}
 FileHandler::~FileHandler() = default;
 
 void FileHandler::handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response) {
+    Poco::Mutex mutex;
+    Poco::ScopedLock<Poco::Mutex> lock(mutex);
+
     response.setStatus(Poco::Net::HTTPResponse::HTTP_OK);
     response.setContentType("text/html; charset=utf-8");
 
