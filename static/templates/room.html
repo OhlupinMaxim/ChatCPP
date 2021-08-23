@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>Ваша комната</title>
-</head>
-<body>
+    <script type="text/javascript">
+        function main() {
+            if ("WebSocket" in window) {
 
-<textarea id="chat-area"></textarea>
-<button>Отправить</button>
+                const ws = new WebSocket("ws://localhost:8080");
+
+                let chatArea = document.querySelector("#chat-area");
+
+                ws.onopen = function () {
+                    console.log("WebSocket Opened");
+                };
+
+                ws.onclose = function () {
+                    console.log("WebSocket closed.");
+                };
+
+                ws.onmessage = function (evt) {
+                    const msg = evt.data;
+                    chatArea.insertAdjacentText("afterbegin", msg);
+                };
+
+                function sendMessage() {
+                    ws.send(inputSend.value);
+                }
+
+                let inputSend = document.getElementById("chat-sendArea");
+                let button = document.querySelector("#chat-sendButton");
+
+                button.addEventListener('click', sendMessage);
+
+
+            } else {
+                alert("This browser does not support WebSockets.");
+            }
+        }
+    </script>
+
+</head>
+<body onload="main()">
+
+<textarea id="chat-area" readonly="true"></textarea>
+
+<form>
+    <input id="chat-sendArea">
+    <input type="button" id="chat-sendButton" value="Отправить">
+</form>
+
 
 </body>
 </html>

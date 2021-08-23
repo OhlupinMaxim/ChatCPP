@@ -4,7 +4,7 @@ project(JsonFactory C CXX)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 file(GLOB JSON_HEADERS
-        libs/*.h
+        include/libs/*.h
         include/*.h
         include/*.hpp
         include/room/*.hpp

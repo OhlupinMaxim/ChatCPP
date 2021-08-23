@@ -10,19 +10,18 @@ Poco::Net::HTTPRequestHandler *RequestHandlerFactory::createRequestHandler(
     auto &uri = request.getURI();
 
     try {
+
+        if (request.find("Upgrade") != request.end()) {
+            if (Poco::icompare(request["Upgrade"], "websocket") == 0) {
+                    return new WebSocketHandler();
+            }
+        }
+
         if (uri == "/") return new FileHandler(homePage);
 
         if (uri == "/room/") return new FileHandler(roomPage);
 
         if (uri == "/room/add/") return new FileHandler(addedRoomPage);
-
-        if (uri == "/api/room/id/")
-
-        if (request.find("Upgrade") != request.end()) {
-            if (Poco::icompare(request["Upgrade"], "websocket") == 0) {
-                return new WebSocketHandler();
-            }
-        }
 
         return new FileHandler(err404page);
 
