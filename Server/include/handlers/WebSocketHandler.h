@@ -6,11 +6,38 @@
 #include <Poco/DateTimeFormatter.h>
 #include <Poco/LocalDateTime.h>
 #include <Poco/Format.h>
+#include <Poco/URI.h>
 
 #include <map>
 
 #include "BaseHandler.h"
 
+
+struct Room {
+public:
+    size_t id;
+    std::map<size_t, Poco::Net::WebSocket *> connections;
+
+    Room(){
+      connections = {};
+    };
+
+    Room(size_t _id) : id(_id) {
+        connections = {};
+    };
+
+    ~Room() = default;
+
+    size_t size() const {
+        return connections.size();
+    }
+
+    void setID (const size_t _id){
+        id = _id;
+    }
+};
+
+static std::map<size_t, Room> Rooms = {};
 
 class WebSocketHandler : public BaseHandler {
 
@@ -21,8 +48,5 @@ public:
 
     void handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response);
 
-    void SocketFunction(Poco::Net::WebSocket &ws, Poco::Net::HTTPServerResponse &response, size_t id) const;
+    void SocketFunction(Poco::Net::WebSocket &ws, Poco::Net::HTTPServerResponse &response, Room& room) const;
 };
-
-static size_t socketIndex = 0;
-static std::map<size_t, Poco::Net::WebSocket * > socketMap = {};

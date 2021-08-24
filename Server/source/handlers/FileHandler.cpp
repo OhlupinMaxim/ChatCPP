@@ -9,7 +9,8 @@ void FileHandler::handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net
     Poco::ScopedLock<Poco::Mutex> lock(mutex);
 
     response.setStatus(Poco::Net::HTTPResponse::HTTP_OK);
-    response.setContentType("text/html; charset=utf-8");
+    auto indexDot = pathFile.find_last_of(".");
+    response.setContentType(MIME_TYPE.at(pathFile.substr(indexDot+1, pathFile.size()-indexDot)));
 
     try {
 

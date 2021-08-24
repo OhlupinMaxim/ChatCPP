@@ -6,6 +6,7 @@
 
 #include <fstream>
 
+#include "Mims.hpp"
 #include "BaseHandler.h"
 
 class FileHandler : public BaseHandler {

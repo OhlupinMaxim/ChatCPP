@@ -6,11 +6,11 @@ RoomInfoSerializer::~RoomInfoSerializer() = default;
 
 const std::string RoomInfoSerializer::serialize() {
     room_id ++;
-    json["RESPONSE"]["ID"] = room_id;
+    json["RESPONSE"]["ROOM_ID"] = room_id;
     return toString();
 }
 
 const std::string RoomInfoSerializer::serialize(const size_t id) {
-    json["RESPONSE"]["ID"] = id;
+    json["RESPONSE"]["ROOM_ID"] = id;
     return toString();
 }

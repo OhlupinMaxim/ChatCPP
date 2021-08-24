@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 
+//______________STATIC_PATH_______________
 const static std::string staticFilesPath = "../../static";
 const static std::string staticFilesRoot = "../api/static";
 const static std::string staticPathExceptionMessage = "Template's Folder not Found (../../static is not exists)";
@@ -24,3 +25,8 @@ const static std::string err405page = errTemplates + "/405.html";
 const static std::string err500page = errTemplates + "/500.html";
 
 
+//_______________URL__________________
+const std::string homeURL = "/";
+const std::string roomURL = "/room/";
+const std::string addRoomURL = "/room/add/";
+const std::string apiRoomURL = "/api/room/";
