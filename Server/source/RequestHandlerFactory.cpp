@@ -15,11 +15,14 @@ Poco::Net::HTTPRequestHandler *RequestHandlerFactory::createRequestHandler(
     auto &uri = request.getURI();
 
     try {
+
         if (concatURI(uri, homeURL)) return new FileHandler(homePage);
 
         if (concatURI(uri, roomURL)) return new FileHandler(roomPage);
 
         if (concatURI(uri, addRoomURL)) return new FileHandler(addedRoomPage);
+
+        if (concatURI(uri, "/styles/")) return new FileHandler(staticFilesRoot + "/styles/styles.css");
 
         if (concatURI(uri, apiRoomURL)) return new RoomInfoHandler();
 

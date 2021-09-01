@@ -10,24 +10,14 @@ void FileHandler::handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net
 
     response.setStatus(Poco::Net::HTTPResponse::HTTP_OK);
     auto indexDot = pathFile.find_last_of(".");
-    response.setContentType(MIME_TYPE.at(pathFile.substr(indexDot+1, pathFile.size()-indexDot)));
+    auto media_type = MIME_TYPE.at(pathFile.substr(indexDot + 1, pathFile.size() - indexDot));
+    response.setContentType(media_type);
 
     try {
-
-        std::ifstream in(pathFile);
-        std::ostream &out = response.send();
-
-        char *c = new char[1];
-        *c = in.get();
-        while (in.good()) {
-            out << c;
-            *c = in.get();
-        }
-        out.flush();
-        in.close();
-
+        response.sendFile(pathFile, media_type);
         printLog(request, response);
-
+    } catch (Poco::FileNotFoundException &ex1) {
+        throw Poco::NotFoundException(ex1.what());
     } catch (std::exception &e) {
         throw Poco::NotFoundException(e.what());
     }

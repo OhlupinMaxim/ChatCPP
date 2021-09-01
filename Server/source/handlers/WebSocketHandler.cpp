@@ -56,8 +56,6 @@ void WebSocketHandler::handleRequest(Poco::Net::HTTPServerRequest &request,
         if (x.first == "room_id") id_room = size_t(std::atoi(x.second.c_str()));
     }
 
-    std::cout << id_room << std::endl;
-
     if (!Rooms.empty()) {
         Poco::Net::WebSocket *ws = new Poco::Net::WebSocket(request, response);
         ws->setKeepAlive(true);
