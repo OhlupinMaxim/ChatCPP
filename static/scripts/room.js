@@ -41,6 +41,9 @@ function main() {
             addedHref.href = `http://localhost:8080/room/add/?room_id=${room_id}`;
             addedHref.textContent = `http://localhost:8080/room/add/?room_id=${room_id}`;
 
+            window.onbeforeunload = function() {
+                ws.close();
+            };
         } else {
             console.log("Get Room Id Failed");
         }
