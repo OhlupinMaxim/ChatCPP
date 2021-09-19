@@ -13,10 +13,10 @@
 - Можете начинать общаться!
 
 ##### Установка и сборка:
-#####CMake:
+####CMake:
 - mkdir build && cd build/ && cmake ../
 - cmake --build . --target all
-#####Docker:
+####Docker:
     
 
 

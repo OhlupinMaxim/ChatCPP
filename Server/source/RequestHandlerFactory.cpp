@@ -24,6 +24,8 @@ Poco::Net::HTTPRequestHandler *RequestHandlerFactory::createRequestHandler(
 
         if (concatURI(uri, "/styles/")) return new FileHandler(staticFilesRoot + "/styles/styles.css");
 
+        if (concatURI(uri, "/room/styles/")) return new FileHandler(staticFilesRoot + "/styles/styles.css");
+
         if (uri == "/scripts/room.js") return new FileHandler(staticFilesRoot + uri);
 
         if (uri == "/scripts/addedRoom.js") return new FileHandler(staticFilesRoot + uri);

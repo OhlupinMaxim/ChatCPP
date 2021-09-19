@@ -4,8 +4,13 @@
 
 #pragma once
 
+#include <thread>
+#include <chrono>
+
 #include "Mims.hpp"
 #include "BaseHandler.h"
+
+static std::map<std::string, std::unique_ptr<Poco::Mutex>> files_mutex = {};
 
 class FileHandler : public BaseHandler {
 
@@ -18,6 +23,9 @@ public:
 
     void handleRequest(Poco::Net::HTTPServerRequest &request, Poco::Net::HTTPServerResponse &response);
 
+private:
+    void LockGetFile() const;
+    void UnlockGetFile() const;
 };
 
 

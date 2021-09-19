@@ -9,10 +9,7 @@ html, body{
 #mainPageHeader {
     color: #FFFFFF;
     text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #ff2d95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
-    /*position:absolute;*/
-    /*top:50%;*/
-    /*left:50%;*/
-    /*margin:-200px 0 0 -200px;*/
+    text-align: center;
 }
 
 #startchat {
@@ -24,6 +21,12 @@ html, body{
     margin:-200px 0 0 -200px;
 }
 
+#startchat.blocktext {
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
+
 #startchat:hover {
     color: #FFFFFF;
     text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #4f56fa 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
@@ -32,4 +35,37 @@ html, body{
 #startchat:active {
     color: #FFFFFF;
     text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #2d49ff 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+#chat-addHref{
+    color: #FFFFFF;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #ff2d95 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+#chat-addHref:hover {
+    color: #FFFFFF;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #4f56fa 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+#chat-addHref:active {
+    color: #FFFFFF;
+    text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #2d49ff 0px 0px 20px, #FF2D95 0px 0px 30px, #FF2D95 0px 0px 40px, #FF2D95 0px 0px 50px, #FF2D95 0px 0px 75px;
+}
+
+#chat-area {
+    height: 240px;
+    width: 480px;
+    alignment: center;
+    text-align-all: center;
+}
+
+#chat-sendArea{
+    width: 480px;
+    alignment: center;
+    text-align-all: center;
+}
+
+#chat-sendButton{
+    alignment: center;
+    align-content: center;
 }
