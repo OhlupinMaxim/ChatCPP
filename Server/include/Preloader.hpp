@@ -6,17 +6,13 @@
 
 #include "handlers/StaticPath.hpp"
 
-static void printServerParamsStarted(Poco::Net::HTTPServerParams *params) {
-    std::cout << "Server Started on localhost:8080 \n";
-    std::cout << "Set Keep Alive == " << (params->getKeepAlive() ? "True\n" : "False\n");
-    std::cout << "Max Thread == " << params->getMaxThreads() << "\n";
-}
-
 static void createStaticFolder() {
     try {
         std::unique_ptr<Poco::File> file(new Poco::File(staticFilesPath));
         if (!file->isDirectory())
             throw Poco::NotFoundException(staticPathExceptionMessage);
+        std::unique_ptr<Poco::File> api_root (new Poco::File(apiRootPath));
+        api_root->createDirectory();
         file->copyTo(apiRootPath);
         std::unique_ptr<Poco::File> staticFolder(new Poco::File(staticFilesRoot));
         if (!staticFolder->isDirectory())

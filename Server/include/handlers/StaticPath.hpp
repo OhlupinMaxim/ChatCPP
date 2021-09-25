@@ -4,12 +4,13 @@
 #include <memory>
 
 //______________STATIC_PATH_______________
-const static std::string staticFilesPath = "../../static";
-const static std::string staticFilesRoot = "../api/static";
+const static std::string staticFilesPath = "../../../static";
+const static std::string staticFilesRoot = "./api/static";
+const static std::string apiRootPath = "./api";
+
+//______________STATIC_MESSAGE____________
 const static std::string staticPathExceptionMessage = "Template's Folder not Found (../../static is not exists)";
 const static std::string staticRootExceptionMessage = "Create Static's Folder Error! (../api/static is not exists)";
-
-const static std::string apiRootPath = "../api";
 
 // _____________TEMPLATES__________________
 const static std::string templates = staticFilesRoot + "/templates";
