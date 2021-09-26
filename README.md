@@ -15,12 +15,12 @@
 - Можете начинать общаться!
 
 ##### Сборка и запуск:
-####CMake и Conan:
+#### CMake и Conan:
 - mkdir build && cd build/ && conan install .. && cmake ../
 - cmake --build . --target all
 - cd ./Executable/bin
 - ./Executable local
-####Docker:
+#### Docker:
 docker build . -t omdmaxim/cpp-chat
 docker run -d -p 8080:8080  omdmaxim/cpp-chat
     

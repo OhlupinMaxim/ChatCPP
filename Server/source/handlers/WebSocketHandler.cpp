@@ -5,7 +5,8 @@ WebSocketHandler::WebSocketHandler() {}
 WebSocketHandler::~WebSocketHandler() = default;
 
 void WebSocketHandler::SocketFunction(Poco::Net::WebSocket &ws,
-                                      Poco::Net::HTTPServerResponse &response, Room &room) const {
+                                      Poco::Net::HTTPServerResponse &response,
+                                      Room &room) const {
     try {
 
         char buffer[8 * 1024];
@@ -30,6 +31,8 @@ void WebSocketHandler::SocketFunction(Poco::Net::WebSocket &ws,
                 x.second->sendFrame(msg, strlen(msg), Poco::Net::WebSocket::FRAME_TEXT);
             }
         } while (n > 0 && (flags & Poco::Net::WebSocket::FRAME_OP_BITMASK) != Poco::Net::WebSocket::FRAME_OP_CLOSE);
+
+        response.send() << "CLOSE";
     }
     catch (Poco::Net::WebSocketException &exc) {
         switch (exc.code()) {

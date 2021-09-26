@@ -2,6 +2,8 @@
 
 int ServerApplication::main(const std::vector<std::string>& args) {
 
+    if (args.empty()) throw Poco::InvalidArgumentException("Args is Empty!");
+
     createStaticFolder();
 
     auto * params = new Poco::Net::HTTPServerParams;
@@ -20,8 +22,6 @@ int ServerApplication::main(const std::vector<std::string>& args) {
 
     std::string host = getHost(args.at(0));
 
-    std::cout << "Server start on " + host + ":8080";
-
     std::unique_ptr<Socket> socket (new Socket(host + ":8080"));
 
     std::unique_ptr<Poco::Net::HTTPServer> server(
@@ -32,6 +32,8 @@ int ServerApplication::main(const std::vector<std::string>& args) {
             ));
 
     server->start();
+
+    printServerParamsStarted(host + ":8080", params);
 
     waitForTerminationRequest();
 
