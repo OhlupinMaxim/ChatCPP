@@ -21,8 +21,8 @@
 - cd ./Executable/bin
 - ./Executable local
 #### Docker:
-docker build . -t omdmaxim/cpp-chat
-docker run -d -p 8080:8080  omdmaxim/cpp-chat
+- docker build . -t omdmaxim/cpp-chat
+- docker run -d -p 8080:8080  omdmaxim/cpp-chat
     
 
 
