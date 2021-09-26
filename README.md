@@ -12,11 +12,15 @@
 - В комнате внизу есть ссылка, передайте ее вашему собеседнику
 - Можете начинать общаться!
 
-##### Установка и сборка:
-####CMake:
-- mkdir build && cd build/ && cmake ../
+##### Сборка и запуск:
+####CMake и Conan:
+- mkdir build && cd build/ && conan install .. && cmake ../
 - cmake --build . --target all
+- cd ./Executable/bin
+- ./Executable local
 ####Docker:
+docker build . -t omdmaxim/cpp-chat
+docker run -d -p 8080:8080  omdmaxim/cpp-chat
     
 
 
