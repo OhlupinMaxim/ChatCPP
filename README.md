@@ -1,5 +1,7 @@
 # Чат на С++
 
+![Actions Status](https://github.com/OhlupinMaxim/ChatCPP/actions/workflows/pushDocker.yml/badge.svg)
+
 #### Program Stack:
 - C++ 14
 - Poco C++ Libraries
